@@ -1,5 +1,5 @@
 # dark-side-chat
-A chat that leads to the dark side
+A chat that leads to the dark side. Powered by the Galactic Empire.
 
 ## Used Frameworks
 - https://www.meteor.com
