@@ -1,4 +1,4 @@
-Tasks = new Mongo.Collection('tasks');
+Messages = new Mongo.Collection('messages');
  
 // This code only runs on the client
 if (Meteor.isClient) {
@@ -12,13 +12,13 @@ if (Meteor.isClient) {
   angular.module('chat').controller('ChatCtrl', ['$scope', '$meteor',
     function ($scope, $meteor) {
  
-      $scope.tasks = $meteor.collection( function() {
-        return Tasks.find({}, { sort: { createdAt: 1 } })
+      $scope.messages = $meteor.collection( function() {
+        return Messages.find({}, { sort: { createdAt: 1 } })
       });
 
-      $scope.addTask = function (newTask) {
-        $scope.tasks.push( {
-          text: newTask,
+      $scope.addMessage = function (newMsg) {
+        $scope.messages.push( {
+          text: newMsg,
           createdAt: new Date(),
           owner: Meteor.userId(),
           username: Meteor.user().username
@@ -54,16 +54,16 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
 
-    if (Tasks.find().count() === 0) {
+    if (Messages.find().count() === 0) {
 
-      var todos = [
+      var fake_messages = [
         {'text': 'Come to the dark side!', createdAt: new Date(), owner: 'Cgc56SntriLN4GLFG', username: 'Vader'},
         {'text': 'Whats the frequency', createdAt: new Date(), owner: 'r76kZTopyp2HPpcpw', username: 'sca'},
         {'text': 'I have been waiting for you!', createdAt: new Date(), owner: 'Cgc56SntriLN4GLFG', username: 'Vader'}
       ];
 
-      for (var i = 0; i < todos.length; i++)
-        Tasks.insert(todos[i]);
+      for (var i = 0; i < fake_messages.length; i++)
+        Messages.insert(fake_messages[i]);
 
     }
 
