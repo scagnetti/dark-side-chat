@@ -1,3 +1,31 @@
+<md-content>
+
+  <form ng-submit="addMessage(newMsg); newMsg='';" ng-show="$root.currentUser">
+    <md-toolbar layout="row" layout-align="space-between center">
+      <div class="md-toolbar-tools">
+
+        <md-input-container>
+            <label>Message</label>
+            <input type="text" ng-model="newMsg" id="input" class="input"/>
+            <!--input type="submit" value="" id="send" class="send"/ -->
+        </md-input-container>
+        <md-button aria-label="First Button"> Send </md-button>
+      </div>
+    </md-toolbar>
+  </form>
+
+  <md-list>
+    <md-list-item class="md-3-line" ng-repeat="msg in messages">
+      <img ng-src="/vader.png" class="md-avatar" alt="Avatar" />
+      <div class="md-list-item-text">
+        <p>{{ msg.text }}</p>
+        <h4><small>{{ msg.username }} - {{msg.createdAt | date:'H:mm'}}</small></h4>
+      </div>
+    </md-list-item>
+  </md-list>
+
+</md-content>
+<!--
 <h1 class="title">Dark Side Chat</h1>
 <div class="wrapper">
   <nav id="nav" class="nav">
@@ -34,3 +62,4 @@
     </form>
   </div>
 </div>
+-->

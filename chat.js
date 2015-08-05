@@ -13,7 +13,7 @@ if (Meteor.isClient) {
     function ($scope, $meteor) {
  
       $scope.messages = $meteor.collection( function() {
-        return Messages.find({}, { sort: { createdAt: 1 } })
+        return Messages.find({}, { sort: { createdAt: -1 } })
       });
 
       $scope.addMessage = function (newMsg) {
