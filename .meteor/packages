@@ -8,7 +8,7 @@ meteor-platform
 autopublish
 insecure
 urigo:angular
-accounts-ui
 accounts-password
 angular:angular-material
 planettraining:material-design-icons
+angularui:angular-ui-router

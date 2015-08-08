@@ -1,9 +1,23 @@
 <md-toolbar md-scroll-shrink layout="row" layout-align="space-between center">
   <div class="md-toolbar-tools">
+    <md-menu>
+      <md-button class="md-icon-button" ng-click="$mdOpenMenu()">
+        <i class="material-icons" style="line-height: 2">menu</i>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <a ui-sref="users">Users</a>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <a ui-sref="logout">Logout</a>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
     <h3>Dark Side Chat</h3>
     <span flex></span>
     <div class="navbar-right navbar-text">
-      <meteor-include src="loginButtons"></meteor-include>
+      <span>{{$root.currentUser.username}}</span>
     </div>
   </div>
 </md-toolbar>
@@ -15,7 +29,9 @@
           <label>Message</label>
           <input type="text" ng-model="newMsg"/>
       </md-input-container>
-      <md-button aria-label="Send">Send</md-button>
+      <md-button class="md-icon-button" aria-label="Send">
+        <i class="material-icons" style="line-height: 2">send</i>
+      </md-button>
     </div>
   </form>
 </div>
