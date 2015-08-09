@@ -1,5 +1,5 @@
-<md-toolbar md-scroll-shrink layout="row" layout-align="space-between center">
-  <div class="md-toolbar-tools">
+<md-toolbar md-scroll-shrink layout="row" layout-align="space-between center" class="fixed_toolbar">
+  <div class="md-toolbar-tools" style="padding-left: 0px;">
     <md-menu>
       <md-button class="md-icon-button" ng-click="$mdOpenMenu()">
         <i class="material-icons" style="line-height: 2">menu</i>
@@ -22,7 +22,7 @@
   </div>
 </md-toolbar>
 
-<div layout="row">
+<div layout="row" class="fixed_input">
   <form ng-submit="addMessage(newMsg); newMsg='';" ng-show="$root.currentUser">
     <div class="md-toolbar-tools">
       <md-input-container>
@@ -36,14 +36,16 @@
   </form>
 </div>
 
-<md-content class="md-padding">
-  <md-list>
-    <md-list-item class="md-3-line" ng-repeat="msg in messages">
-      <img ng-src="/vader.png" class="md-avatar" alt="Avatar" />
-      <div class="md-list-item-text">
-        <p>{{ msg.text }}</p>
-        <h4><small>{{ msg.username }} - {{msg.createdAt | date:'H:mm'}}</small></h4>
-      </div>
-    </md-list-item>
-  </md-list>
-</md-content>
+<div class="test">
+  <md-content class="md-padding relative_messages">
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="msg in messages">
+        <img ng-src="{{msg.avatar}}" class="md-avatar" alt="Avatar" />
+        <div class="md-list-item-text">
+          <p>{{ msg.text }}</p>
+          <h4><small>{{ msg.username }} - {{msg.createdAt | date:'H:mm'}}</small></h4>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>

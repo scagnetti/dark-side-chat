@@ -8,10 +8,20 @@ if (Meteor.isClient) {
   angular.module('chat').controller('RegistrationCtrl', ['$scope', '$state',
     function($scope, $state){
 
+      $scope.extract = function(s){
+        return s.substring(0,s.indexOf('.'));
+      };
+
+      $scope.images = ['boba.png','c3po.png','chewbacca.png', 'emperor.png',
+      'han.png', 'leia.png', 'luke.png', 'obi.png', 'r2d2.png', 'storm.png', 'vader.png', 'yoda.png'];
+
+      $scope.options = $scope.images.map(function (img) { return {n: $scope.extract(img), v: img}; });
+
       $scope.register = function() {
         Accounts.createUser({
           username: $scope.username,
-          password: $scope.password
+          password: $scope.password,
+          profile: {avatar: $scope.avatar}
         }, function(error){
             if(error){
                 console.log(error.reason);
@@ -58,7 +68,8 @@ if (Meteor.isClient) {
           text: newMsg,
           createdAt: new Date(),
           owner: Meteor.userId(),
-          username: Meteor.user().username
+          username: Meteor.user().username,
+          avatar: Meteor.user().profile['avatar']
         });
       };
 
