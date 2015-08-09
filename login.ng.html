@@ -1,0 +1,34 @@
+<md-toolbar md-scroll-shrink layout="row" layout-align="center center">
+  <div class="md-toolbar-tools">
+    <h2>Welcome to the Dark Side Chat</h2>
+  </div>
+</md-toolbar>
+
+<md-subheader class="md-primary">
+  <div layout="row" layout-align="center center">
+    <h3>Please login</h3>
+  </div>
+</md-subheader>
+
+<md-content class="md-padding">
+  <div ng-show="failure"><h3>Login failed</h3></div>
+  <form class="login">
+    <md-input-container>
+      <label>Username</label>
+      <input required type="text" ng-model="username">
+    </md-input-container>
+
+    <md-input-container>
+      <label>Password</label>
+      <input required type="password" ng-model="password"/>
+    </md-input-container>
+
+    <md-button ng-click="login()" aria-label="Login">Login</md-button>
+  </form>
+</md-content>
+
+<md-content class="md-padding">
+  <div layout="row" layout-align="center center">
+    <p>No account yet? Then <a ui-sref="register">register</a></p>
+  </div>
+</md-content>
